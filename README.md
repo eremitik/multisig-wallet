@@ -1,6 +1,6 @@
 # Multi-signature Wallet
 
-My first real attempt at building a Dapp.
+My first real attempt at building a Dapp.\
 Please visit the site [here](https://eremitik-multisig.netlify.app/)!
 
 ![home](./home.png)
