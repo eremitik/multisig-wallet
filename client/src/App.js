@@ -1,9 +1,31 @@
 import React, {useEffect, useState} from 'react';
 import {getWeb3, getWallet} from './utils.js';
-import Header from './Header.js';
-import NewTransfer from './NewTransfer.js';
-import TransferList from './TransferList.js';
-import './App.css';
+import Header from './components/Header.js';
+import NewTransfer from './components/NewTransfer.js';
+import TransferList from './components/TransferList.js';
+import styled, { css } from 'styled-components';
+
+const Typography = styled.p`
+  font-size: 50px;
+  font-weight: 900;
+  margin-bottom: 25px;
+  margin-top: 0px;
+
+  ${props => props.subtitle && css`
+    font-size: 20px;
+    font-weight: 800; 
+    color: #383838;
+  `}
+`
+
+const Container = styled.div `
+  background-color: black;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`
 
 function App() {
   const [web3, setWeb3] = useState(undefined); 
@@ -54,16 +76,13 @@ function App() {
   }
 
   return (
-    <div className="Multisig">
-      <h1>Multisig Dapp Wallet</h1>
-      <p>This Dapp interacts with the Kovan testnet. Please do NOT send mainnet ETH.<br/>Input the amount of KETH in WEI amount, and the receiver's Kovan address.</p>
+    <Container>
+      <Typography>Multisig Wallet</Typography>
+      <Typography subtitle>This Dapp interacts with the Kovan testnet. Please do NOT send mainnet ETH.<br/>Input the amount of KETH in WEI amount, and the receiver's Kovan address.</Typography>
       <Header approvers={approvers} quorum={quorum} />
       <NewTransfer createTransfer={createTransfer} />
       <TransferList transfers={transfers} approveTransfer={approveTransfer}/>
-      <p className="Home-link">
-        <a href="https://eremitik.github.io/mywebsite/#/projects" style={{textDecoration:"none", color:"white"}}>home</a>
-      </p>
-    </div>
+    </Container>
   );
 }
 
