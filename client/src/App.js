@@ -16,6 +16,14 @@ const Typography = styled.p`
     font-weight: 800; 
     color: #383838;
   `}
+
+  ${props => props.start && css`
+    margin-bottom: 5px;
+    padding: 0;
+    font-size: 35px;
+    font-weight: 900;
+    color: black; 
+  `}
 `
 
 const Container = styled.div `
@@ -24,6 +32,17 @@ const Container = styled.div `
   position: absolute;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
+`
+
+const StartContainer = styled.div`
+  background-color: white;
+  position: absolute;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  left: 50%;
+  top: 50%;
   transform: translate(-50%, -50%);
 `
 
@@ -72,7 +91,12 @@ function App() {
     || approvers.length === 0 
     || typeof quorum === 'undefined'
   ) {
-    return <div>Loading...</div>;
+    return (
+      <StartContainer>
+        <Typography start>Please connect to Kovan Test Network.</Typography>
+        <Typography start>Thank you!</Typography>
+      </StartContainer>
+    )
   }
 
   return (
